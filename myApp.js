@@ -8,6 +8,8 @@ const homestyle = __dirname + '/public';
 
 app.use("/public",express.static(homestyle));
 
+app.use(logger)
+
 app.get("/", (req, res) => {
     res.sendFile(homePagePath);
 });
@@ -19,7 +21,13 @@ app.get("/json", (req, res) => {
         res.send({"message": "Hello json"});
     }
     
-})
+});
+
+function logger (req, res, next) {
+    const log = `${req.method} ${req.path} - ${req.ip} `;
+    console.log(log);
+    next();
+}
 
 
 
