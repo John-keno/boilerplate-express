@@ -1,5 +1,6 @@
 let express = require('express');
 const res = require('express/lib/response');
+require('dotenv').config()
 let app = express();
 
 const homePagePath = __dirname + '/views/index.html';
@@ -12,7 +13,12 @@ app.get("/", (req, res) => {
 });
 
 app.get("/json", (req, res) => {
-    res.send({"message": "Hello json"});
+    if (process.env.MESSAGE_STYLE === "uppercase"){
+        res.send({"message": "HELLO JSON"});
+    }else {
+        res.send({"message": "Hello json"});
+    }
+    
 })
 
 
