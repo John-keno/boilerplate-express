@@ -1,7 +1,12 @@
 let express = require('express');
 const res = require('express/lib/response');
+const body_parser = require('body-parser')
 require('dotenv').config()
 let app = express();
+
+app.use(body_parser.urlencoded({extended:false}));
+
+app.use(body_parser.json());
 
 const homePagePath = __dirname + '/views/index.html';
 const homestyle = __dirname + '/public';
