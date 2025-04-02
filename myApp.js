@@ -27,6 +27,13 @@ app.get("/now",logger, (req, res, next) =>{
     res.send({"time": req.time})
 })
 
+app.get("/:word/echo", (req, res) => {
+    const data = req.params.word;
+    res.send({
+        "echo": data
+    })
+})
+
 function logger (req, res, next) {
     const log = `${req.method} ${req.path} - ${req.ip}`;
     req.time = new Date().toString();
