@@ -32,6 +32,14 @@ app.get("/:word/echo", (req, res) => {
     res.send({
         "echo": data
     })
+});
+
+app.get("/name", (req, res) => {
+    const data = req.query;
+
+    res.send({
+        "name": `${data.first} ${data.last}`
+    })
 })
 
 function logger (req, res, next) {
