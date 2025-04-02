@@ -44,8 +44,15 @@ app.get("/name", (req, res) => {
 
     res.send({
         "name": `${data.first} ${data.last}`
-    })
-})
+    });
+});
+
+app.post("/name", (req, res) => {
+    const data = req.body;
+    res.send({
+        "name": `${data.first} ${data.last}`
+    });
+});
 
 function logger (req, res, next) {
     const log = `${req.method} ${req.path} - ${req.ip}`;
